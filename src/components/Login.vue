@@ -17,9 +17,11 @@
 				</div>
 
 				<div class="form-item chBox">
-					<input type="checkbox" v-model="checked" name="chkBox" /><label for="chkBox"
-						>Show Password</label
-					>
+					<label class="chkContainer"
+						>Show Password
+						<input type="checkbox" v-model="checked" name="chkBox" />
+						<span class="checkmark"></span>
+					</label>
 				</div>
 				<div class="form-item btn">
 					<button>Login</button>
