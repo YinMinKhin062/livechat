@@ -32,13 +32,16 @@
 					<i class="fa-solid fa-right-to-bracket"></i>
 				</div>
 			</form>
+			<div class="error" v-if="error">
+				<p>{{ error }}</p>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity';
-
+import createAccount from '../Composable/CreateAccount';
 export default {
 	setup() {
 		let displayName = ref('');
@@ -46,12 +49,17 @@ export default {
 		let password = ref('');
 		let checked = ref('');
 
-		let SignUp = () => {
-			console.log(password.value);
-			console.log(email.value);
+		//destructuring
+		let { error, newAccount } = createAccount();
+
+		let SignUp = async () => {
+			error.value = null; //refresh error value whenever page reload
+			let account = await newAccount(displayName.value, email.value, password.value);
+			if (account) console.log(account.user);
+			else console.log(error.value);
 		};
 
-		return { displayName, email, password, checked, SignUp };
+		return { displayName, email, password, checked, SignUp, error };
 	},
 };
 </script>

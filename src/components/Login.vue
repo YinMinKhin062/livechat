@@ -28,12 +28,16 @@
 					<i class="fa-solid fa-right-to-bracket"></i>
 				</div>
 			</form>
+			<div class="error" v-if="error">
+				<p>{{ error }}</p>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity';
+import loginAccount from '../Composable/LoginAccount';
 
 export default {
 	setup() {
@@ -41,12 +45,17 @@ export default {
 		let password = ref('');
 		let checked = ref('');
 
-		let login = () => {
-			console.log(password.value);
-			console.log(email.value);
+		let { error, userAccount } = loginAccount();
+
+		let login = async () => {
+			error.value = null; //refresh error value whenever page reload
+			let userAccRes = await userAccount(email.value, password.value);
+			if (userAccRes) {
+				console.log(userAccRes.user);
+			}
 		};
 
-		return { email, password, checked, login };
+		return { email, password, checked, login, error };
 	},
 };
 </script>
