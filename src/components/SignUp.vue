@@ -43,7 +43,7 @@
 import { ref } from '@vue/reactivity';
 import createAccount from '../Composable/CreateAccount';
 export default {
-	setup() {
+	setup(props, context) {
 		let displayName = ref('');
 		let email = ref('');
 		let password = ref('');
@@ -55,8 +55,10 @@ export default {
 		let SignUp = async () => {
 			error.value = null; //refresh error value whenever page reload
 			let account = await newAccount(displayName.value, email.value, password.value);
-			if (account) console.log(account.user);
-			else console.log(error.value);
+			if (account) {
+				console.log(account.user);
+				context.emit('enterChatroom');
+			} else console.log(error.value);
 		};
 
 		return { displayName, email, password, checked, SignUp, error };
