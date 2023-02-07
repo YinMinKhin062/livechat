@@ -76,11 +76,31 @@ button:hover {
 /* ==========signin/up========= */
 
 .SignUp_In {
-	width: 375px;
+	width: 65%;
+	/* width: 375px; */
 	margin: auto;
 	padding-top: 10px;
 	/* background: blue; */
 	/* box-sizing: border-box; */
+}
+
+/* media query */
+@media screen and (max-width: 760px) {
+	.SignUp_In {
+		width: 98%;
+	}
+	.btn .fa-solid {
+		visibility: hidden;
+	}
+	.chBox {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.chBox label {
+		padding-left: 8.2rem;
+	}
 }
 
 .SignUp_In .title h2 {
@@ -97,7 +117,7 @@ button:hover {
 input[type='text'],
 input[type='email'],
 input[type='password'] {
-	width: 100%;
+	width: 95%;
 	border: none;
 	outline: none;
 	background: transparent;
@@ -112,7 +132,7 @@ input[type='password'] {
 .form-item .fa-solid {
 	position: absolute;
 	top: 2px;
-	left: 0;
+	left: 10px;
 }
 .chBox {
 	/* margin-bottom: 2rem; */
@@ -173,7 +193,7 @@ input[type='password'] {
 }
 
 .form-item button {
-	width: 100%;
+	width: 95%;
 	margin: 0 0 0.8rem 0;
 	outline: none;
 	border-radius: 1.5rem;
@@ -207,7 +227,7 @@ input[type='password'] {
 /* ================chatform=============== */
 .chatform {
 	max-width: 550px;
-	margin: 10px auto;
+	margin: 1.5rem auto 0 auto;
 	/* position: relative; */
 	/* justify-content: center; */
 	/* background: red; */
@@ -232,35 +252,59 @@ input[type='password'] {
 }
 
 /* ========== chat message=========== */
+.chatcontainer {
+	height: 400px;
+	overflow-y: scroll;
+}
+
 .messages {
+	/* max-width: 300px; */
+	width: 65%;
 	display: flex;
 	flex-direction: column;
-	margin: 1rem;
+	margin: auto;
+	/* text-align: right; */
+
 	/* background-color: blue; */
 }
 
 .single {
 	border: 2px solid #dedede;
 	background: var(--color-darkpale);
-	border-radius: 1rem 1rem 0rem 1rem;
-	padding: 16px;
+	border-radius: 1.7rem 1.7rem 0rem 1.7rem;
+	padding: 12px;
 	margin: 10px 0;
 	text-align: left;
 }
 
 .name {
 	font-weight: bold;
-	padding-right: 0.5rem;
+	/* padding-right: 0.5rem; */
 	font-size: 13px;
 	font-style: italic;
+	color: var(--color-hyacinth);
 }
 .message {
 	font-size: 12px;
 }
 
+/* .message .name {
+	display: inline-block;
+	padding-right: 15px;
+	text-decoration: none;
+	text-transform: none;
+	font-size: 13px;
+	font-style: italic;
+	color: white;
+	padding: 0px 7px;
+	border-radius: 15px;
+	background: slategray;
+} */
+
 .created_at {
 	float: right;
 	color: #aaa;
 	font-size: 10px;
+	/* margin-bottom: 1rem; */
 	/* padding-bottom: 7px; */
 }
